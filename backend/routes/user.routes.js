@@ -8,25 +8,25 @@ require("dotenv").config()
  
  
 
-userController.post("/signup",async(req,res)=>{
+// userController.post("/signup",async(req,res)=>{
 
-    const {email,password} = req.body
+//     const {email,password} = req.body
 
-    const user = new UserModel ({
-        email,
-        password
-    })
-    try{
-        await user.save()
+//     const user = new UserModel ({
+//         email,
+//         password
+//     })
+//     try{
+//         await user.save()
 
-        res.json({msg:"Signup Successfully"})
-    }
-    catch(err){
-        // console.log(err)
-        res.json({msg:"Something went wrongg"})
-    }
+//         res.json({msg:"Signup Successfully"})
+//     }
+//     catch(err){
+//         // console.log(err)
+//         res.json({msg:"Something went wrongg"})
+//     }
 
-})
+// })
  
 
 
