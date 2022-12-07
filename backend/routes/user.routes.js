@@ -27,7 +27,7 @@ userController.post("/signup",async(req,res)=>{
     }
 
 })
-
+ 
 
 
 
@@ -40,18 +40,23 @@ userController.post("/login",async(req,res)=>{
 
     const user = await UserModel.findOne({email})
 
-   if(user.password == password){
+  try{
+    if(user?.password == password){
     
-    let token = jwt.sign({userId : user._id},process.env.JWT_SECRET)
+        let token = jwt.sign({userId : user._id},process.env.JWT_SECRET)
+         
+        res.json({token})
      
-    res.json({token:token})
+    
+       }
+  }
+catch(err){
+    res.json({msg:"Something went wrong Please check your credentials",err})
+}
+//    
+  
+})  
 
-   }
-
-   res.json({msg:"Something went wrong Please check your credentials"})
-
-})
-
-module.exports ={
+module.exports ={ 
     userController
-} 
+}  
